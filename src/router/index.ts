@@ -46,6 +46,11 @@ const routes = [
         path: '/logout',
         name: 'Logout',
         component: () => import('@/pages/LogoutPage.vue')
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: () => import('@/pages/NotFoundPage.vue')
     }
 ]
 
@@ -55,9 +60,10 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    const authStore = useAuthStore();
-    if(to.meta.requiresAuth && !authStore.isAuthenticated) {
-        next('/login');
+    const authStore = useAuthStore()
+
+    if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+        next('/login')
     } else if (to.meta.requiresGuest && authStore.isAuthenticated) {
         next('/dashboard')
     } else {
