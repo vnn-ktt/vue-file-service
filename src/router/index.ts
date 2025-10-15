@@ -1,7 +1,7 @@
-import {createRouter, createWebHistory} from 'vue-router';
-import {useAuthStore} from '@/stores/auth';
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 
-const routes = [
+const routes: RouteRecordRaw[] = [
     {
         path: '/',
         name: 'Home',
@@ -11,52 +11,24 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: () => import('@/pages/LoginPage.vue'),
-        meta: { requiresGuest: true },
-    },
-    {
-        path: '/register',
-        name: 'Register',
-        component: () => import('@/pages/RegisterPage.vue'),
         meta: { requiresGuest: true }
     },
     {
         path: '/dashboard',
         name: 'Dashboard',
-        component: () => import('@/layouts/DashboardLayout.vue'),
-        meta: { requiresAuth: true },
-        children: [
-            {
-                path: '',
-                name: 'Dashboard',
-                component: () => import('@/pages/DashboardPage.vue')
-            },
-            {
-                path: 'files',
-                name: 'Files',
-                component: () => import('@/pages/FilesPage.vue')
-            },
-            {
-                path: 'profile',
-                name: 'Profile',
-                component: () => import('@/pages/ProfilePage.vue')
-            }
-        ]
+        component: () => import('@/pages/DashboardPage.vue'),
+        meta: { requiresAuth: true }
     },
     {
         path: '/logout',
         name: 'Logout',
         component: () => import('@/pages/LogoutPage.vue')
-    },
-    {
-        path: '/:pathMatch(.*)*',
-        name: 'NotFound',
-        component: () => import('@/pages/NotFoundPage.vue')
     }
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
+    history: createWebHistory(),
+    routes
 })
 
 router.beforeEach((to, _from, next) => {
@@ -69,6 +41,6 @@ router.beforeEach((to, _from, next) => {
     } else {
         next()
     }
-});
+})
 
-export default router;
+export default router

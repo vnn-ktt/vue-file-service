@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="min-h-screen bg-dark-900 text-gray-100">
+  <div id="app" class="min-h-screen bg-dark-900 text-gray-100 flex flex-col">
     <Header />
     <main class="flex-1">
       <RouterView />
@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useAuthStore } from '@/stores/auth.ts'
-import Header from '@/components/layout/Header.vue'
-import Footer from '@/components/layout/Footer.vue'
+import { onMounted } from 'vue';
+import { useAuthStore } from '@/stores/auth.ts';
+import Header from '@/layouts/Header.vue';
+import Footer from '@/layouts/Footer.vue';
 
 const authStore = useAuthStore()
 

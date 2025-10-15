@@ -16,7 +16,6 @@ export function useAuth() {
         authLoading
     } = storeToRefs(authStore)
 
-    // Обертки над actions для удобства
     const login = async (credentials: LoginCredentials) => {
         return await authStore.login(credentials)
     }
@@ -42,7 +41,6 @@ export function useAuth() {
     }
 
     return {
-        // State (реактивные)
         user,
         tokens,
         isLoading,
@@ -52,7 +50,6 @@ export function useAuth() {
         authError,
         authLoading,
 
-        // Actions
         login,
         register,
         logout,
