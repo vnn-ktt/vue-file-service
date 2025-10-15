@@ -1,28 +1,34 @@
-import type { ValidationResult, ValidationError } from '@/types/global'
+import type { ValidationResult, ValidationError } from '@/types/global';
 
 export const validationRules = {
     email: {
-        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        message: 'Please enter a valid email address'
+        pattern: /^(?!\.)(?!.*\.\.)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
+        message: 'enter a valid email address'
     },
     phone: {
-        pattern: /^\d{10,15}$/,
-        message: 'Please enter a valid phone number (10-15 digits)'
+        pattern: /^\+[1-9]{1,4}[\s\-]?\(?[0-9]{1,5}\)?[\s\-]?[0-9]{1,10}[\s\-]?[0-9]{1,10}$/,
+        message: 'enter a valid phone number'
     },
     password: {
         minLength: 6,
-        message: 'Password must be at least 6 characters'
+        message: 'password must be at least 6 characters'
     }
 }
 
+export interface FormValues {
+    id: string
+    password: string
+    confirmPassword?: string
+}
+
 export function validateEmailOrPhone(value: string): string {
-    if (!value) return 'Email or phone is required'
+    if (!value) return 'email or phone is required'
 
     const isEmail = validationRules.email.pattern.test(value)
     const isPhone = validationRules.phone.pattern.test(value)
 
     if (!isEmail && !isPhone) {
-        return 'Please enter a valid email or phone number'
+        return 'enter a valid email or phone number'
     }
 
     return ''
@@ -37,33 +43,24 @@ export function validatePassword(value: string): string {
 }
 
 export function validateConfirmPassword(password: string, confirmPassword: string): string {
-    if (!confirmPassword) return 'Please confirm your password'
-    if (password !== confirmPassword) return 'Passwords do not match'
+    if (!confirmPassword) return 'confirm your password'
+    if (password !== confirmPassword) return 'passwords do not match'
     return ''
-}
-
-export interface FormValues {
-    id: string
-    password: string
-    confirmPassword?: string
 }
 
 export function validateForm(values: FormValues, isLogin: boolean = false): ValidationResult {
     const errors: ValidationError[] = []
 
-    // Email/phone validation
     const emailPhoneError = validateEmailOrPhone(values.id)
     if (emailPhoneError) {
         errors.push({ field: 'id', message: emailPhoneError })
     }
 
-    // Password validation
     const passwordError = validatePassword(values.password)
     if (passwordError) {
         errors.push({ field: 'password', message: passwordError })
     }
 
-    // Confirm password validation (only for registration)
     if (!isLogin && values.confirmPassword !== undefined) {
         const confirmPasswordError = validateConfirmPassword(values.password, values.confirmPassword)
         if (confirmPasswordError) {

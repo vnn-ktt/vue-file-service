@@ -1,4 +1,3 @@
-// API response wrapper
 export interface ApiResponse<T = any> {
     success: boolean
     data?: T
@@ -6,7 +5,6 @@ export interface ApiResponse<T = any> {
     message?: string
 }
 
-// Pagination types
 export interface PaginationParams {
     page: number
     pageSize: number
@@ -21,7 +19,6 @@ export interface PaginationMeta {
     hasPrev: boolean
 }
 
-// File types
 export interface UploadedFile {
     id: string
     name: string
@@ -31,7 +28,6 @@ export interface UploadedFile {
     uploadedAt: string
 }
 
-// Form validation
 export interface ValidationError {
     field: string
     message: string

@@ -1,7 +1,6 @@
-import type { LoginCredentials, RegisterData, AuthData, ApiResponse } from '@/types/auth'
+import type { LoginCredentials, RegisterData, AuthData } from '@/types/auth'
 
 class AuthApiService {
-    private baseUrl = '/api'
     private storageKey = 'fileServiceAuth'
 
     private setAuthData(data: AuthData): void {
