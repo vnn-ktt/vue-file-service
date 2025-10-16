@@ -1,35 +1,144 @@
-@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #0f0f23;
+    color: #e5e7eb;
+    min-height: 100vh;
+    background-image:
+            radial-gradient(circle at 15% 50%, rgba(120, 119, 198, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.btn-cyber {
+    background-color: #9333ea;
+    color: white;
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid #a855f7;
+    box-shadow: 0 4px 6px -1px rgba(147, 51, 234, 0.25);
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.btn-cyber:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.btn-cyber:active {
+    transform: scale(0.95);
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.btn-neon {
+    background-color: transparent;
+    color: #c026d3;
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 2px solid #c026d3;
+    box-shadow: 0 4px 6px -1px rgba(192, 38, 211, 0.25);
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-neon:hover {
+    background-color: #c026d3;
+    color: white;
+    box-shadow: 0 0 20px rgba(192, 38, 211, 0.5);
+}
+
+.btn-secondary {
+    background-color: #16213e;
+    color: #d1d5db;
+    font-family: 'Share Tech Mono', monospace;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid #0f3460;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #0f3460;
+    border-color: #a855f7;
+    color: white;
+}
+
+.cyber-card {
+    background-color: rgba(26, 26, 46, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(147, 51, 234, 0.2);
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.cyber-card:hover {
+    border-color: rgba(168, 85, 247, 0.6);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+}
+
+.cyber-input {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #16213e;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.3s ease;
+}
+
+.cyber-input::placeholder {
+    color: #9ca3af;
+}
+
+.cyber-input:focus {
+    outline: none;
+    border-color: #a855f7;
+    background-color: #0f3460;
+    box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.5);
+}
+
+.cyber-input:hover {
+    border-color: #a855f7;
+}
+
+.cyber-header {
+    background: linear-gradient(to right, #d8b4fe, #c026d3, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.neon-text {
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Orbitron', monospace;
 }
