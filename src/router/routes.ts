@@ -47,9 +47,9 @@ export const routes: RouteRecordRaw[] = [
     //     component: () => import('@/pages/LogoutPage.vue'),
     //     meta: { requiresAuth: true }
     // },
-    // {
-    //      path: '/:pathMatch(.*)*',
-    //      name: 'NotFound',
-    //      component: () => import('@/pages/NotFoundPage.vue')
-    // }
+    {
+         path: '/:pathMatch(.*)*',
+         name: 'NotFound',
+         component: () => import('@/pages/NotFoundPage.vue')
+    }
 ]

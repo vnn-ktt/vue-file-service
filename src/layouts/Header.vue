@@ -7,11 +7,11 @@
             class="flex items-center space-x-3 group"
         >
           <div class="w-10 h-10 bg-gradient-to-br from-cyber-500 to-neon-purple rounded-lg flex items-center justify-center shadow-lg animate-pulse-glow">
-            <span class="text-white font-cyber font-black text-sm">F5</span>
+            <span class="text-white font-cyber font-black text-sm">CC</span>
           </div>
           <div>
             <span class="cyber-header text-2xl group-hover:animate-pulse">
-              file service
+              cybercloud
             </span>
             <div class="h-1 w-0 group-hover:w-full bg-gradient-to-r from-cyber-500 to-neon-purple transition-all duration-500 rounded-full"></div>
           </div>
@@ -75,7 +75,7 @@
                   to="/register"
                   class="btn-cyber text-sm"
               >
-                register
+                sign up
               </RouterLink>
             </div>
           </template>
@@ -141,7 +141,7 @@
                   class="block text-cyber-300 hover:text-cyber-200 transition-colors font-tech py-2"
                   @click="closeMobileMenu"
               >
-                register
+                sign up
               </RouterLink>
             </template>
           </div>
