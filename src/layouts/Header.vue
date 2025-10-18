@@ -64,28 +64,29 @@
 
           <template v-else>
             <div class="flex items-center space-x-3">
-              <RouterLink
+              <ButtonLink
                   to="/login"
-                  class="text-cyber-300 hover:text-cyber-200 transition-colors font-tech border border-cyber-500/50 hover:border-cyber-400 px-4 py-2 rounded-lg"
-              >
-                sign in
-              </RouterLink>
-
-              <RouterLink
+                  :icon-left="IconLogin"
+                  :text="'sign in'"
+                  :size="'sm'"
+                  variant="cyber"
+              />
+              <ButtonLink
                   to="/register"
-                  class="btn-cyber text-sm"
-              >
-                sign up
-              </RouterLink>
+                  :icon-left="IconRegister"
+                  :text="'sign up'"
+                  :size="'sm'"
+                  variant="cyber"
+              />
             </div>
           </template>
 
-          <button
+          <button-link
               class="md:hidden text-cyber-300 hover:text-cyber-200 transition-colors"
               @click="toggleMobileMenu"
           >
             <IconDynamicBurger :is-opened="isMobileMenuOpen" />
-          </button>
+          </button-link>
         </div>
       </div>
       <div
@@ -157,6 +158,9 @@
   import IconDynamicBurger from "@/components/icons/IconDynamicBurger.vue";
   import IconStorage from "@/components/icons/IconStorage.vue";
   import IconLogout from "@/components/icons/IconLogout.vue";
+  import IconLogin from "@/components/icons/IconLogin.vue";
+  import IconRegister from "@/components/icons/IconRegister.vue";
+  import ButtonLink from "@/components/ui/ButtonLink.vue";
 
   const { isAuthenticated } = useAuth();
 
