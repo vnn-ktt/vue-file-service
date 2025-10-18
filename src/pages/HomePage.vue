@@ -33,28 +33,24 @@
         <!-- animated logo/badge -->
         <div class="mb-8 flex justify-center">
           <div class="relative">
-            <div class="w-24 h-24 bg-gradient-to-br from-cyber-500 to-neon-purple rounded-2xl flex items-center justify-center shadow-2xl animate-pulse-glow">
-              <span class="text-white font-cyber font-black text-2xl">CyberCloud</span>
-            </div>
+            <!-- main heading with glitch effect -->
+            <h1 class="text-4xl md:text-8xl font-cyber font-bold mb-6 cyber-header relative">
+              <span class="cyber-glitch" data-text="cybercloud">cybercloud</span>
+            </h1>
             <!-- orbiting elements -->
-            <div class="absolute -top-2 -right-2 w-6 h-6 bg-neon-pink rounded-full animate-orbit-slow"></div>
+            <div class="absolute -top-1 -right-2 w-6 h-6 bg-neon-pink rounded-full animate-orbit-slow"></div>
             <div class="absolute -bottom-2 -left-2 w-4 h-4 bg-neon-blue rounded-full animate-orbit-fast"></div>
           </div>
         </div>
 
-        <!-- main heading with glitch effect -->
-        <h1 class="text-5xl md:text-7xl font-cyber font-bold mb-6 cyber-header relative">
-          <span class="cyber-glitch" data-text="FILE SERVICE">cybercloud</span>
-        </h1>
-
         <!-- subtitle with typing animation -->
         <div class="h-8 mb-8 flex justify-center items-center">
-          <p class="text-cyber-200 font-tech text-xl md:text-2xl typing-animation">
+          <p class="text-cyber-200 font-tech text-xl md:text-3xl typing-animation">
             secure file service
           </p>
         </div>
 
-        <!-- Animated buttons -->
+        <!-- animated buttons -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <RouterLink
               to="/login"
@@ -102,43 +98,43 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
-  const particleClasses = [
-    'w-2 h-2 animate-float',
-    'w-3 h-3 animate-float',
-    'w-1 h-1 animate-float',
-    'w-4 h-4 animate-pulse-glow'
-  ]
+const particleClasses = [
+  'w-2 h-2 animate-float',
+  'w-3 h-3 animate-float',
+  'w-1 h-1 animate-float',
+  'w-4 h-4 animate-pulse-glow'
+]
 
-  const stats = ref([
-    { id: 1, label: 'files', value: 1024 },
-    { id: 2, label: 'active users', value: 256 },
-    { id: 3, label: 'uptime %', value: 999 },
-    { id: 4, label: 'encryption', value: 256 }
-  ])
+const stats = ref([
+  { id: 1, label: 'files', value: 1024 },
+  { id: 2, label: 'active users', value: 256 },
+  { id: 3, label: 'uptime %', value: 999 },
+  { id: 4, label: 'encryption', value: 256 }
+])
 
-  onMounted(() => {
-    const counters = document.querySelectorAll('.counting-animation')
-    counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-target') || '0')
-      const duration = 2000
-      const step = target / (duration / 16)
-      let current = 0
+onMounted(() => {
+  const counters = document.querySelectorAll('.counting-animation')
+  counters.forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target') || '0')
+    const duration = 2000
+    const step = target / (duration / 16)
+    let current = 0
 
-      const updateCounter = () => {
-        current += step
-        if (current < target) {
-          counter.textContent = Math.ceil(current).toString()
-          requestAnimationFrame(updateCounter)
-        } else {
-          counter.textContent = target.toString()
-        }
+    const updateCounter = () => {
+      current += step
+      if (current < target) {
+        counter.textContent = Math.ceil(current).toString()
+        requestAnimationFrame(updateCounter)
+      } else {
+        counter.textContent = target.toString()
       }
+    }
 
-      setTimeout(updateCounter, 1000)
-    })
+    setTimeout(updateCounter, 1000)
   })
+})
 </script>
 
 <style scoped>
@@ -157,12 +153,6 @@
   100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
 }
 
-@keyframes typing {
-  0% { width: 0; }
-  50% { width: 100%; }
-  100% { width: 100%; }
-}
-
 .animate-scan {
   animation: scan 3s linear infinite;
 }
@@ -179,7 +169,24 @@
   overflow: hidden;
   border-right: 2px solid #a855f7;
   white-space: nowrap;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  margin: 0 auto;
+  animation: typing 1.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation-fill-mode: both;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 310px; }
+}
+
+@media (max-width: 768px) {
+  .typing-animation {
+    animation: typing-mobile 1.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+  @keyframes typing-mobile {
+    from { width: 0; }
+    to { width: 210px; }
+  }
 }
 
 @keyframes blink-caret {
@@ -197,6 +204,8 @@
 .cyber-glitch {
   position: relative;
   display: inline-block;
+  color: #00ffea;
+  text-shadow: 2px 2px 0 #ff00ff, -2px -2px 0 #00ffff;
 }
 
 .cyber-glitch::before,
@@ -207,34 +216,36 @@
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0.6;
 }
 
 .cyber-glitch::before {
-  animation: glitch-1 2s infinite linear alternate-reverse;
   color: #ff00ff;
+  animation: glitch-1 1s infinite linear alternate-reverse;
   z-index: -1;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
 }
 
 .cyber-glitch::after {
-  animation: glitch-2 3s infinite linear alternate-reverse;
   color: #00ffff;
+  animation: glitch-2 1s infinite linear alternate-reverse;
   z-index: -2;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
 }
 
 @keyframes glitch-1 {
-  0% { transform: translate(0); opacity: 0.8; }
-  20% { transform: translate(-3px, 3px); opacity: 0.6; }
-  40% { transform: translate(-3px, -3px); opacity: 0.4; }
-  60% { transform: translate(3px, 3px); opacity: 0.6; }
-  80% { transform: translate(3px, -3px); opacity: 0.8; }
-  100% { transform: translate(0); opacity: 1; }
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
 }
 
 @keyframes glitch-2 {
-  0% { transform: translate(0); opacity: 0.8; }
-  25% { transform: translate(3px, 3px); opacity: 0.4; }
-  50% { transform: translate(3px, -3px); opacity: 0.6; }
-  75% { transform: translate(-3px, 3px); opacity: 0.4; }
-  100% { transform: translate(0); opacity: 0.8; }
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, 2px); }
+  80% { transform: translate(-2px, -2px); }
 }
 </style>
