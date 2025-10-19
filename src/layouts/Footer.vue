@@ -27,6 +27,7 @@
               home
             </RouterLink>
             <RouterLink
+                v-if="isAuthenticated"
                 to="/dashboard"
                 class="block text-cyber-200 hover:text-cyber-300 transition-colors font-tech text-sm"
             >
@@ -103,4 +104,6 @@
   import IconTelegram from "@/components/icons/IconTelegram.vue";
   import IconGithub from "@/components/icons/IconGithub.vue";
   import IconLeetcode from "@/components/icons/IconLeetcode.vue";
+  import {useAuth} from "@/composables/useAuth.ts";
+  const { isAuthenticated } = useAuth();
 </script>

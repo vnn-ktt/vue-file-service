@@ -29,24 +29,24 @@ export const routes: RouteRecordRaw[] = [
     //         }
     //     ]
     // },
-    // {
-    //     path: '/register',
-    //     name: 'Register',
-    //     component: () => import('@/pages/RegisterPage.vue'),
-    //     meta: { requiresGuest: true },
-    // },
-    // {
-    //     path: '/login',
-    //     name: 'Login',
-    //     component: () => import('@/pages/LoginPage.vue'),
-    //     meta: { requiresGuest: true }
-    // },
-    // {
-    //     path: '/logout',
-    //     name: 'Logout',
-    //     component: () => import('@/pages/LogoutPage.vue'),
-    //     meta: { requiresAuth: true }
-    // },
+    {
+        path: '/register',
+        name: 'Register',
+        component: () => import('@/pages/RegisterPage.vue'),
+        meta: { requiresGuest: true },
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import('@/pages/LoginPage.vue'),
+        meta: { requiresGuest: true }
+    },
+    {
+        path: '/logout',
+        name: 'Logout',
+        component: () => import('@/pages/LogoutPage.vue'),
+        meta: { requiresAuth: true }
+    },
     {
          path: '/:pathMatch(.*)*',
          name: 'NotFound',

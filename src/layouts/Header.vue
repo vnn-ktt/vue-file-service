@@ -40,6 +40,20 @@
           >
             about
           </RouterLink>
+          <RouterLink
+              to="/documentation"
+              class="text-gray-300 hover:text-cyber-300 transition-all duration-300 font-tech hover:animate-pulse border-b-2 border-transparent hover:border-cyber-400 pb-1"
+              :class="{ 'text-cyber-300 border-cyber-400': $route.path === '/about' }"
+          >
+            documentation
+          </RouterLink>
+          <RouterLink
+              to="/contact"
+              class="text-gray-300 hover:text-cyber-300 transition-all duration-300 font-tech hover:animate-pulse border-b-2 border-transparent hover:border-cyber-400 pb-1"
+              :class="{ 'text-cyber-300 border-cyber-400': $route.path === '/about' }"
+          >
+            contact
+          </RouterLink>
         </nav>
 
         <div class="flex items-center space-x-4">

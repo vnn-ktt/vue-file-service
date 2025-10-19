@@ -12,7 +12,7 @@
         </div>
       </div>
       <!-- scanning -->
-      <div class="scanning mt-2 text-center mb-4">
+      <div class="scanning mt-2 text-center mb-4 cursor-pointer" @click="runDiagnostics">
         <div class="scan-section space-y-4 animate-element-in" style="--delay: 0.3s">
           <div>
             <div class="scan-progress">
@@ -26,13 +26,12 @@
               {{ scanMessages[currentScanStep] }}
             </div>
           </div>
-          <div class="mt-3 text-cyber-300 cursor-pointer" @click="runDiagnostics">click here to rescan</div>
+          <div class="mt-3 text-cyber-300">click here to rescan</div>
         </div>
       </div>
       <!-- cards -->
       <div class="cards grid grid-cols-1 md:grid-cols-2 gap-5">
         <CyberCard
-            variant="cyber"
             size="md"
             class="animate-element-in cursor-default"
             style="--delay: 0.3s"
@@ -156,7 +155,7 @@ const scanMessages = [
   "> checking_route_integrity...",
   "> verifying_access_permissions...",
   "> analyzing_network_topology...",
-  ">>> found a problem with resource path..."
+  ">>> found a problem with a resource path <<<"
 ]
 
 function generateErrorCode(): string {
@@ -242,8 +241,8 @@ onMounted(() => {
 }
 
 .scan-section {
-  background: rgba(30, 30, 60, 0.3);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: var(--dark-900);
+  border: 1px solid var(--blood-100);
   border-radius: 8px;
   padding: 1.5rem;
   backdrop-filter: blur(10px);

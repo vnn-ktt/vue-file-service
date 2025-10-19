@@ -73,7 +73,7 @@ const props = withDefaults(defineProps<Props>(), {
   clickable: false,
   glow: true,
   gridOverlay: true,
-  animatedBorder: true
+  animatedBorder: false
 })
 
 const emit = defineEmits<{
