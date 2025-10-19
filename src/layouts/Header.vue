@@ -6,11 +6,11 @@
             to="/"
             class="flex items-center space-x-3 group"
         >
-          <div class="w-10 h-10 bg-gradient-to-br from-cyber-500 to-neon-purple rounded-lg flex items-center justify-center shadow-lg animate-pulse-glow">
+          <div class="w-10 h-10 bg-gradient-to-br from-cyber-500 to-neon-purple rounded-lg flex items-center justify-center shadow-lg">
             <span class="text-white font-cyber font-black text-sm">CC</span>
           </div>
           <div>
-            <span class="cyber-header text-2xl group-hover:animate-pulse">
+            <span class="cyber-header text-2xl font-bold font-cyber">
               cybercloud
             </span>
             <div class="h-1 w-0 group-hover:w-full bg-gradient-to-r from-cyber-500 to-neon-purple transition-all duration-500 rounded-full"></div>
@@ -64,14 +64,14 @@
 
           <template v-else>
             <div class="flex items-center space-x-3">
-              <ButtonLink
+              <CyberButton
                   to="/login"
                   :icon-left="IconLogin"
                   :text="'sign in'"
                   :size="'sm'"
                   variant="cyber"
               />
-              <ButtonLink
+              <CyberButton
                   to="/register"
                   :icon-left="IconRegister"
                   :text="'sign up'"
@@ -81,12 +81,12 @@
             </div>
           </template>
 
-          <button-link
+          <cyber-button
               class="md:hidden text-cyber-300 hover:text-cyber-200 transition-colors"
               @click="toggleMobileMenu"
           >
             <IconDynamicBurger :is-opened="isMobileMenuOpen" />
-          </button-link>
+          </cyber-button>
         </div>
       </div>
       <div
@@ -160,7 +160,7 @@
   import IconLogout from "@/components/icons/IconLogout.vue";
   import IconLogin from "@/components/icons/IconLogin.vue";
   import IconRegister from "@/components/icons/IconRegister.vue";
-  import ButtonLink from "@/components/ui/ButtonLink.vue";
+  import CyberButton from "@/components/ui/CyberButton.vue";
 
   const { isAuthenticated } = useAuth();
 

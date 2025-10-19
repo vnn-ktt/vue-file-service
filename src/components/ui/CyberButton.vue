@@ -17,45 +17,40 @@
       :disabled="disabled || loading"
       @click="handleClick"
   >
-    <!-- Loading spinner -->
     <div v-if="loading" class="absolute inset-0 flex items-center justify-center">
       <div class="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
     </div>
 
-    <!-- Left icon -->
     <div v-if="iconLeft && !loading" class="flex items-center">
       <component :is="iconLeft" class="flex-shrink-0" :class="iconSizeClasses[size]" />
     </div>
 
-    <!-- Text content -->
     <span v-if="($slots.default || text) && !loading"
           class="relative z-10 flex items-center space-x-2"
           :class="textSizeClasses[size]">
       <slot>{{ text }}</slot>
     </span>
 
-    <!-- Right icon -->
     <div v-if="iconRight && !loading" class="flex items-center">
       <component :is="iconRight" class="flex-shrink-0" :class="iconSizeClasses[size]" />
     </div>
 
-    <!-- Badge -->
     <span v-if="badge && !loading"
           class="badge"
           :class="badgeVariantClasses[badgeVariant]">
       {{ badge }}
     </span>
 
-    <!-- Hover effects -->
     <div v-if="variant === 'cyber' && !loading" class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
     <div v-if="variant === 'neon' && !loading" class="absolute inset-0 bg-gradient-to-r from-neon-purple/20 to-neon-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
     <div v-if="variant === 'matrix' && !loading" class="absolute inset-0 bg-gradient-to-b from-green-400/10 via-transparent to-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     <div v-if="variant === 'glow' && !loading" class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
 
-    <!-- Pulse effect for warning and alert -->
-    <div v-if="(variant === 'warning' || variant === 'alert') && !loading"
-         class="absolute inset-0 rounded-lg animate-pulse opacity-20"
-         :class="variant === 'warning' ? 'bg-yellow-400' : 'bg-red-400'"></div>
+    <div
+        v-if="(variant === 'warning' || variant === 'alert') && !loading"
+        class="absolute inset-0 rounded-lg animate-pulse opacity-20"
+        :class="variant === 'warning' ? 'bg-yellow-400' : 'bg-red-400'"
+    ></div>
   </component>
 </template>
 
@@ -64,30 +59,23 @@ import type { Component } from 'vue'
 import { computed } from 'vue'
 
 interface Props {
-  // Content
   text?: string
   iconLeft?: Component
   iconRight?: Component
   badge?: string | number
   badgeVariant?: 'default' | 'success' | 'warning' | 'error'
-
-  // Styling
   variant?: 'cyber' | 'neon' | 'danger' | 'success' | 'warning' | 'info' | 'ghost' | 'matrix' | 'glow' | 'alert'
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   layout?: 'left' | 'center' | 'right'
   disabled?: boolean
   loading?: boolean
-
-  // Navigation
   to?: string
   href?: string
   isExternal?: boolean
-
-  // Behavior
   as?: 'button' | 'link' | 'router-link'
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   variant: 'cyber',
   size: 'md',
   layout: 'center',
@@ -95,14 +83,13 @@ withDefaults(defineProps<Props>(), {
   loading: false,
   isExternal: false,
   as: 'router-link',
-  badgeVariant: 'default'
-})
+  badgeVariant: 'default',
+});
 
 const emit = defineEmits<{
   click: [event: MouseEvent]
 }>()
 
-// Determine component tag
 const tag = computed(() => {
   if (props.as === 'button') return 'button'
   if (props.as === 'link' || props.isExternal) return 'a'
@@ -229,14 +216,13 @@ const handleClick = (event: MouseEvent) => {
 
 .badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: 0;
+  right: 0;
   padding: 2px 6px;
   border-radius: 9999px;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: bold;
   line-height: 1;
-  min-width: 1.25rem;
   text-align: center;
 }
 

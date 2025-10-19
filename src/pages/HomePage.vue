@@ -5,7 +5,7 @@
         <div class="mb-8 flex justify-center">
           <div class="relative">
             <!-- main heading with glitch effect -->
-            <h1 class="text-4xl md:text-8xl font-cyber font-bold mb-6 cyber-header relative">
+            <h1 class="text-4xl md:text-8xl font-cyber font-bold mb-6 cyber-heading relative">
               <span class="cyber-glitch" data-text="cybercloud">cybercloud</span>
             </h1>
             <!-- orbiting elements -->
@@ -17,31 +17,33 @@
         <!-- subtitle with typing animation -->
         <div class="h-8 mb-8 flex justify-center items-center">
           <p class="text-cyber-200 font-tech text-xl md:text-3xl typing-animation">
-            secure file service
+            future's file service
           </p>
         </div>
 
         <!-- animated buttons -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <ButtonLink
+          <CyberButton
               to="/login"
+              :as="'router-link'"
               :icon-left="IconLogin"
               :text="'sign in'"
               :size="'lg'"
-              variant="neon"
+              variant="cyber"
           />
-          <ButtonLink
+          <CyberButton
               to="/register"
+              :as="'router-link'"
               :icon-left="IconRegister"
               :text="'sign up'"
               :size="'lg'"
-              variant="neon"
+              variant="cyber"
           />
         </div>
 
         <!-- animated stats -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-          <div
+          <CyberCard
               v-for="stat in stats"
               :key="stat.id"
               class="cyber-card text-center transform hover:scale-105 transition-transform duration-300"
@@ -50,7 +52,7 @@
               0
             </div>
             <div class="text-cyber-300 font-tech text-sm">{{ stat.label }}</div>
-          </div>
+          </CyberCard>
         </div>
       </div>
     </div>
@@ -60,7 +62,8 @@
 import { ref, onMounted } from 'vue';
 import IconLogin from '@/components/icons/IconLogin.vue';
 import IconRegister from '@/components/icons/IconRegister.vue';
-import ButtonLink from '@/components/ui/ButtonLink.vue';
+import CyberButton from '@/components/ui/CyberButton.vue';
+import CyberCard from "@/components/ui/CyberCard.vue";
 
 const stats = ref([
   { id: 1, label: 'files', value: 1024 },
@@ -93,20 +96,26 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.cyber-heading {
+  background: linear-gradient(to right, var(--neon-blue), var(--neon-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
 @keyframes orbit-slow {
   0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
   100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
 }
-
 @keyframes orbit-fast {
   0% { transform: rotate(0deg) translateX(30px) rotate(0deg); }
   100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
 }
-
 .animate-orbit-slow {
   animation: orbit-slow 6s linear infinite;
 }
-
 .animate-orbit-fast {
   animation: orbit-fast 3s linear infinite;
 }
@@ -119,72 +128,21 @@ onMounted(() => {
   animation: typing 1.5s steps(40, end), blink-caret 0.75s step-end infinite;
   animation-fill-mode: both;
 }
-
 @keyframes typing {
   from { width: 0; }
-  to { width: 310px; }
+  to { width: 350px; }
 }
-
 @keyframes blink-caret {
   from, to { border-color: transparent; }
   50% { border-color: #a855f7; }
 }
-
 @media (max-width: 768px) {
   .typing-animation {
     animation: typing-mobile 1.5s steps(40, end), blink-caret 0.75s step-end infinite;
   }
   @keyframes typing-mobile {
     from { width: 0; }
-    to { width: 210px; }
+    to { width: 240px; }
   }
-}
-
-.cyber-glitch {
-  position: relative;
-  display: inline-block;
-  color: #00ffea;
-  text-shadow: 2px 2px 0 #ff00ff, -2px -2px 0 #00ffff;
-}
-
-.cyber-glitch::before,
-.cyber-glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
-}
-
-.cyber-glitch::before {
-  color: #ff00ff;
-  animation: glitch-1 1s infinite linear alternate-reverse;
-  z-index: -1;
-  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-}
-
-.cyber-glitch::after {
-  color: #00ffff;
-  animation: glitch-2 1s infinite linear alternate-reverse;
-  z-index: -2;
-  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-}
-
-@keyframes glitch-1 {
-  0%, 100% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-}
-
-@keyframes glitch-2 {
-  0%, 100% { transform: translate(0); }
-  20% { transform: translate(2px, 2px); }
-  40% { transform: translate(2px, -2px); }
-  60% { transform: translate(-2px, 2px); }
-  80% { transform: translate(-2px, -2px); }
 }
 </style>

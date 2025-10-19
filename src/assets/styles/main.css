@@ -1,73 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap');
+@import '@/assets/styles/animations.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --cyber-50: #faf5ff;
+    --cyber-100: #f3e8ff;
+    --cyber-200: #e9d5ff;
+    --cyber-300: #d8b4fe;
+    --cyber-400: #c084fc;
+    --cyber-500: #a855f7;
+    --cyber-600: #9333ea;
+    --cyber-700: #7c3aed;
+    --cyber-800: #6b21a8;
+    --cyber-900: #581c87;
+    --cyber-950: #3b0764;
+
+    --neon-purple: #c026d3;
+    --neon-pink: #ec4899;
+    --neon-blue: #06b6d4;
+    --neon-green: #10b981;
+
+    --dark-900: #0f0f23;
+    --dark-800: #1a1a2e;
+    --dark-700: #16213e;
+    --dark-600: #0f3460;
+
+    --blood-100: #ef4444;
+    --blood-200: #dc2626;
+    --blood-300: #b91c1c;
+
+    --glitch-blood: #ff6b6b;
+    --glitch-sky: #4ecdc4;
+    --glitch-neon: #ff00ff;
+}
+
 body {
     font-family: 'Share Tech Mono', monospace;
-    background-color: #0f0f23;
-    color: #e5e7eb;
+    background-color: var(--dark-900);
+    color: var(--cyber-50);
     min-height: 100vh;
     background-image:
             radial-gradient(circle at 15% 50%, rgba(120, 119, 198, 0.03) 0%, transparent 50%),
             radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
-}
-
-.cyber-card {
-    background-color: rgba(26, 26, 46, 0.8);
-    backdrop-filter: blur(8px);
-    border-radius: 12px;
-    border: 1px solid rgba(168, 85, 247, 0.3);
-    box-shadow: 0 20px 25px -5px rgba(147, 51, 234, 0.2);
-    padding: 24px;
-    transition: all 0.3s ease;
-}
-
-.cyber-card:hover {
-    border-color: rgba(168, 85, 247, 0.6);
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
-}
-
-.cyber-input {
-    width: 100%;
-    padding: 12px 16px;
-    background-color: #16213e;
-    border: 1px solid rgba(168, 85, 247, 0.3);
-    border-radius: 8px;
-    color: white;
-    font-family: 'Share Tech Mono', monospace;
-    transition: all 0.3s ease;
-}
-
-.cyber-input::placeholder {
-    color: #9ca3af;
-}
-
-.cyber-input:focus {
-    outline: none;
-    border-color: #a855f7;
-    background-color: #0f3460;
-    box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.5);
-}
-
-.cyber-input:hover {
-    border-color: #a855f7;
-}
-
-.cyber-header {
-    background: linear-gradient(to right, #d8b4fe, #c026d3, #a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    letter-spacing: 0.1em;
-}
-
-.neon-text {
-    background: linear-gradient(to right, #a855f7, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-family: 'Orbitron', monospace;
 }

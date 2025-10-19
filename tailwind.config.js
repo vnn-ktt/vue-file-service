@@ -31,6 +31,16 @@ export default {
                     800: '#1a1a2e',
                     700: '#16213e',
                     600: '#0f3460',
+                },
+                blood: {
+                    100: '#ef4444',
+                    200: '#dc2626',
+                    300: '#b91c1c'
+                },
+                glitch: {
+                    blood: '#ff6b6b',
+                    sky: '#4ecdc4',
+                    neon: '#ff00ff'
                 }
             },
             fontFamily: {
