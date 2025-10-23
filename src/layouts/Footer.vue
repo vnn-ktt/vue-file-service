@@ -31,7 +31,7 @@
                 to="/dashboard"
                 class="block text-cyber-200 hover:text-cyber-300 transition-colors font-tech text-sm"
             >
-              dashboard
+              storage
             </RouterLink>
             <RouterLink
                 to="/about"

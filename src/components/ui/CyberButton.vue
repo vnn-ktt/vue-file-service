@@ -6,14 +6,14 @@
       :target="isExternal ? '_blank' : undefined"
       class="cyber-button group relative overflow-hidden"
       :class="[
-      variantClasses[variant],
-      sizeClasses[size],
+      (uiBtnVariantClasses[variant] + ' ' + uiVariantClasses[variant]),
+      uiSizeClasses[size],
       layoutClasses[layout],
       { 'justify-center': layout === 'center' },
       { 'cursor-pointer': !disabled },
       { 'opacity-50 cursor-not-allowed': disabled },
       { 'animate-pulse': loading }
-    ]"
+      ]"
       :disabled="disabled || loading"
       @click="handleClick"
   >
@@ -22,41 +22,38 @@
     </div>
 
     <div v-if="iconLeft && !loading" class="flex items-center">
-      <component :is="iconLeft" class="flex-shrink-0" :class="iconSizeClasses[size]" />
+      <component :is="iconLeft" class="flex-shrink-0" :class="uiIconSizeClasses[size]" />
     </div>
 
     <span v-if="($slots.default || text) && !loading"
           class="relative z-10 flex items-center space-x-2"
-          :class="textSizeClasses[size]">
+          :class="uiTextSizeClasses[size]">
       <slot>{{ text }}</slot>
     </span>
 
     <div v-if="iconRight && !loading" class="flex items-center">
-      <component :is="iconRight" class="flex-shrink-0" :class="iconSizeClasses[size]" />
+      <component :is="iconRight" class="flex-shrink-0" :class="uiIconSizeClasses[size]" />
     </div>
 
     <span v-if="badge && !loading"
           class="badge"
-          :class="badgeVariantClasses[badgeVariant]">
+          :class="uiBadgeVariantClasses[badgeVariant]">
       {{ badge }}
     </span>
-
-    <div v-if="variant === 'cyber' && !loading" class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-    <div v-if="variant === 'neon' && !loading" class="absolute inset-0 bg-gradient-to-r from-neon-purple/20 to-neon-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-    <div v-if="variant === 'matrix' && !loading" class="absolute inset-0 bg-gradient-to-b from-green-400/10 via-transparent to-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-    <div v-if="variant === 'glow' && !loading" class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
-
-    <div
-        v-if="(variant === 'warning' || variant === 'alert') && !loading"
-        class="absolute inset-0 rounded-lg animate-pulse opacity-20"
-        :class="variant === 'warning' ? 'bg-yellow-400' : 'bg-red-400'"
-    ></div>
   </component>
 </template>
 
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { computed } from 'vue'
+import {
+  uiVariantClasses,
+  uiBtnVariantClasses,
+  uiIconSizeClasses,
+  uiSizeClasses,
+  uiBadgeVariantClasses,
+  uiTextSizeClasses
+} from "@/components/const/styleVariants.ts";
 
 interface Props {
   text?: string
@@ -96,54 +93,10 @@ const tag = computed(() => {
   return 'RouterLink'
 })
 
-const variantClasses = {
-  cyber: 'btn-cyber border-cyber-500/50 hover:border-cyber-400 text-cyber-300',
-  neon: 'btn-neon border-neon-purple/50 hover:border-neon-purple text-neon-purple',
-  danger: 'btn-danger border-red-500/50 hover:border-red-400 text-red-400',
-  success: 'btn-success border-green-500/50 hover:border-green-400 text-green-400',
-  warning: 'btn-warning border-yellow-500/50 hover:border-yellow-400 text-yellow-400',
-  info: 'btn-info border-blue-500/50 hover:border-blue-400 text-blue-400',
-  ghost: 'btn-ghost border-gray-500/30 hover:border-gray-400 text-gray-400 hover:bg-gray-500/10',
-  matrix: 'btn-matrix border-green-400/50 hover:border-green-300 text-green-400 font-mono',
-  glow: 'btn-glow border-cyan-400/50 hover:border-cyan-300 text-cyan-300',
-  alert: 'btn-alert border-red-600/60 hover:border-red-500 text-red-500 animate-pulse-slow'
-}
-
-const sizeClasses = {
-  xs: 'px-2 py-1 text-xs',
-  sm: 'px-3 py-2 text-sm',
-  md: 'px-4 py-2 text-base',
-  lg: 'px-6 py-3 text-lg',
-  xl: 'px-8 py-4 text-xl'
-}
-
 const layoutClasses = {
   left: 'justify-start',
   center: 'justify-center',
   right: 'justify-end'
-}
-
-const iconSizeClasses = {
-  xs: 'w-3 h-3',
-  sm: 'w-4 h-4',
-  md: 'w-5 h-5',
-  lg: 'w-6 h-6',
-  xl: 'w-7 h-7'
-}
-
-const textSizeClasses = {
-  xs: 'text-xs',
-  sm: 'text-sm',
-  md: 'text-base',
-  lg: 'text-lg',
-  xl: 'text-xl'
-}
-
-const badgeVariantClasses = {
-  default: 'bg-gray-500/50 text-gray-200',
-  success: 'bg-green-500/50 text-green-200',
-  warning: 'bg-yellow-500/50 text-yellow-200',
-  error: 'bg-red-500/50 text-red-200'
 }
 
 const handleClick = (event: MouseEvent) => {

@@ -21,86 +21,63 @@
           <RouterLink
               to="/"
               class="text-gray-300 hover:text-cyber-300 transition-all duration-300 font-tech hover:animate-pulse border-b-2 border-transparent hover:border-cyber-400 pb-1"
-              :class="{ 'text-cyber-300 border-cyber-400': $route.path === '/' }"
           >
             home
+          </RouterLink>
+          <RouterLink
+              to="/about"
+              class="text-gray-300 hover:text-cyber-300 transition-all duration-300 font-tech hover:animate-pulse border-b-2 border-transparent hover:border-cyber-400 pb-1"
+          >
+            about
           </RouterLink>
           <RouterLink
               v-if="isAuthenticated"
               to="/dashboard"
               class="text-gray-300 hover:text-cyber-300 transition-all duration-300 font-tech hover:animate-pulse border-b-2 border-transparent hover:border-cyber-400 pb-1"
-              :class="{ 'text-cyber-300 border-cyber-400': $route.path.startsWith('/dashboard') }"
           >
-            dashboard
-          </RouterLink>
-          <RouterLink
-              to="/about"
-              class="text-gray-300 hover:text-cyber-300 transition-all duration-300 font-tech hover:animate-pulse border-b-2 border-transparent hover:border-cyber-400 pb-1"
-              :class="{ 'text-cyber-300 border-cyber-400': $route.path === '/about' }"
-          >
-            about
+            storage
           </RouterLink>
           <RouterLink
               to="/documentation"
               class="text-gray-300 hover:text-cyber-300 transition-all duration-300 font-tech hover:animate-pulse border-b-2 border-transparent hover:border-cyber-400 pb-1"
-              :class="{ 'text-cyber-300 border-cyber-400': $route.path === '/about' }"
           >
             documentation
           </RouterLink>
           <RouterLink
               to="/contact"
               class="text-gray-300 hover:text-cyber-300 transition-all duration-300 font-tech hover:animate-pulse border-b-2 border-transparent hover:border-cyber-400 pb-1"
-              :class="{ 'text-cyber-300 border-cyber-400': $route.path === '/about' }"
           >
             contact
           </RouterLink>
         </nav>
 
-        <div class="flex items-center space-x-4">
-          <template v-if="isAuthenticated">
-            <div class="flex items-center space-x-3">
-              <RouterLink
-                  to="/dashboard"
-                  class="text-cyber-300 hover:text-cyber-200 transition-colors font-tech border border-cyber-500/50 hover:border-cyber-400 px-4 py-2 rounded-lg flex items-center space-x-2"
-              >
-                <IconStorage />
-                <span>storage</span>
-              </RouterLink>
-              <RouterLink
-                  to="/logout"
-                  class="btn-neon text-sm flex items-center space-x-2"
-              >
-                <IconLogout />
-                <span>logout</span>
-              </RouterLink>
-            </div>
-          </template>
+        <nav class="hidden md:flex space-x-4">
+          <CyberButton
+              v-if="!isAuthenticated"
+              variant="glow"
+              to="/login"
+              :as="'router-link'"
+              :size="'md'"
+              :icon-left="IconLogin"
+          />
+          <CyberButton
+              v-if="!isAuthenticated"
+              variant="danger"
+              to="/register"
+              :as="'router-link'"
+              :size="'md'"
+              :icon-left="IconRegister"
+          />
+        </nav>
 
-          <template v-else>
-            <div class="flex items-center space-x-3">
-              <CyberButton
-                  to="/login"
-                  :icon-left="IconLogin"
-                  :text="'sign in'"
-                  :size="'sm'"
-                  variant="cyber"
-              />
-              <CyberButton
-                  to="/register"
-                  :icon-left="IconRegister"
-                  :text="'sign up'"
-                  :size="'sm'"
-                  variant="cyber"
-              />
-            </div>
-          </template>
-
-          <cyber-button
-              class="md:hidden text-cyber-300 hover:text-cyber-200 transition-colors"
+        <div class="md:hidden flex items-center space-x-4">
+          <CyberButton
+              class="hidden"
               @click="toggleMobileMenu"
-          >
-            <IconDynamicBurger :is-opened="isMobileMenuOpen" />
-          </cyber-button>
+              :as="'button'"
+              :icon-left="IconDynamicBurger"
+              :size="'sm'"
+          />
         </div>
       </div>
       <div
@@ -115,22 +92,34 @@
           >
             home
           </RouterLink>
-
-          <RouterLink
-              v-if="isAuthenticated"
-              to="/dashboard"
-              class="block text-gray-300 hover:text-cyber-300 transition-colors font-tech py-2"
-              @click="closeMobileMenu"
-          >
-            dashboard
-          </RouterLink>
-
           <RouterLink
               to="/about"
               class="block text-gray-300 hover:text-cyber-300 transition-colors font-tech py-2"
               @click="closeMobileMenu"
           >
             about
+          </RouterLink>
+          <RouterLink
+              v-if="isAuthenticated"
+              to="/dashboard"
+              class="block text-gray-300 hover:text-cyber-300 transition-colors font-tech py-2"
+              @click="closeMobileMenu"
+          >
+            storage
+          </RouterLink>
+          <RouterLink
+              to="/documentation"
+              class="block text-gray-300 hover:text-cyber-300 transition-colors font-tech py-2"
+              @click="closeMobileMenu"
+          >
+            documentation
+          </RouterLink>
+          <RouterLink
+              to="/contact"
+              class="block text-gray-300 hover:text-cyber-300 transition-colors font-tech py-2"
+              @click="closeMobileMenu"
+          >
+            contact
           </RouterLink>
 
           <div class="pt-2 border-t border-cyber-500/20">
@@ -146,14 +135,14 @@
             <template v-else>
               <RouterLink
                   to="/login"
-                  class="block text-cyber-300 hover:text-cyber-200 transition-colors font-tech py-2"
+                  class="block text-gray-300 hover:text-cyber-300 transition-colors font-tech py-2"
                   @click="closeMobileMenu"
               >
                 sign in
               </RouterLink>
               <RouterLink
                   to="/register"
-                  class="block text-cyber-300 hover:text-cyber-200 transition-colors font-tech py-2"
+                  class="block text-gray-300 hover:text-cyber-300 transition-colors font-tech py-2"
                   @click="closeMobileMenu"
               >
                 sign up
@@ -170,11 +159,9 @@
   import { ref, onMounted, onUnmounted } from 'vue';
   import { useAuth } from '@/composables/useAuth';
   import IconDynamicBurger from "@/components/icons/IconDynamicBurger.vue";
-  import IconStorage from "@/components/icons/IconStorage.vue";
-  import IconLogout from "@/components/icons/IconLogout.vue";
+  import CyberButton from "@/components/ui/CyberButton.vue";
   import IconLogin from "@/components/icons/IconLogin.vue";
   import IconRegister from "@/components/icons/IconRegister.vue";
-  import CyberButton from "@/components/ui/CyberButton.vue";
 
   const { isAuthenticated } = useAuth();
 

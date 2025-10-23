@@ -24,20 +24,22 @@
         <!-- animated buttons -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <CyberButton
+              v-if="!isAuthenticated"
               to="/login"
               :as="'router-link'"
               :icon-left="IconLogin"
               :text="'sign in'"
               :size="'lg'"
-              variant="cyber"
+              variant="glow"
           />
           <CyberButton
+              v-if="!isAuthenticated"
               to="/register"
               :as="'router-link'"
               :icon-left="IconRegister"
               :text="'sign up'"
               :size="'lg'"
-              variant="cyber"
+              variant="danger"
           />
         </div>
 
@@ -64,6 +66,9 @@ import IconLogin from '@/components/icons/IconLogin.vue';
 import IconRegister from '@/components/icons/IconRegister.vue';
 import CyberButton from '@/components/ui/CyberButton.vue';
 import CyberCard from "@/components/ui/CyberCard.vue";
+import { useAuth } from '@/composables/useAuth';
+
+const { isAuthenticated } = useAuth();
 
 const stats = ref([
   { id: 1, label: 'files', value: 1024 },

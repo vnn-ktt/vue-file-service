@@ -18,7 +18,7 @@ export const useAuthStore = defineStore('auth', () => {
     const error = ref<string | null>(null);
 
     /* Getters */
-    const isAuthenticated = computed<boolean>(() => true);
+    const isAuthenticated = computed<boolean>(() => !!user.value);
     const currentUser = computed<User | null>(() => user.value);
     const authError = computed<string | null>(() => error.value);
     const authLoading = computed<boolean>(() => isLoading.value);

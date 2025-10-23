@@ -46,7 +46,7 @@
             submit-text="ACTIVATE ACCOUNT"
             @submit="handleRegister"
         >
-          <CyberInput
+          <CyberInputText
               v-model="formData.id"
               label="USER IDENTIFIER"
               type="text"
@@ -57,7 +57,7 @@
               @update:modelValue="clearError('id')"
           />
 
-          <CyberInput
+          <CyberInputText
               v-model="formData.password"
               label="SECURITY KEY"
               type="password"
@@ -84,7 +84,7 @@
             </div>
           </div>
 
-          <CyberInput
+          <CyberInputText
               v-model="formData.confirmPassword"
               label="CONFIRM SECURITY KEY"
               type="password"
@@ -156,7 +156,7 @@ import { ref, computed, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
 import CyberForm from '@/components/ui/CyberForm.vue'
-import CyberInput from '@/components/ui/CyberInput.vue'
+import CyberInputText from '@/components/ui/CyberInputText.vue'
 
 // Icons
 const EmailIcon = {
