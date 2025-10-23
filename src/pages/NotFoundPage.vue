@@ -122,7 +122,7 @@
             <div class="contact-protocol">
               <div class="text-yellow-400 text-xs mb-2">contact_channel</div>
               <div class="text-cyan-400 text-sm bg-cyan-500/10 p-2 rounded border border-cyan-500/30 font-mono">
-                admin@cybercloud.net
+                admin@cybercloude.net
               </div>
             </div>
           </div>

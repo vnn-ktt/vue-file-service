@@ -6,7 +6,7 @@
           <div class="relative">
             <!-- main heading with glitch effect -->
             <h1 class="text-4xl md:text-8xl font-cyber font-bold mb-6 cyber-heading relative">
-              <span class="cyber-glitch" data-text="cybercloud">cybercloud</span>
+              <span class="cyber-glitch" data-text="cybercloude">cybercloude</span>
             </h1>
             <!-- orbiting elements -->
             <div class="absolute -top-1 -right-2 w-6 h-6 bg-neon-pink rounded-full animate-orbit-slow"></div>
@@ -16,9 +16,9 @@
 
         <!-- subtitle with typing animation -->
         <div class="h-8 mb-8 flex justify-center items-center">
-          <p class="text-cyber-200 font-tech text-xl md:text-3xl typing-animation">
+          <h2 class="text-3xl font-cyber font-bold text-cyber-300 mb-3 typing-animation">
             future's file service
-          </p>
+          </h2>
         </div>
 
         <!-- animated buttons -->

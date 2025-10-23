@@ -9,7 +9,7 @@
             <div class="w-8 h-8 bg-gradient-to-br from-cyber-500 to-neon-purple rounded flex items-center justify-center">
               <span class="text-white font-cyber font-bold text-xs">CC</span>
             </div>
-            <span class="neon-text font-cyber font-bold text-xl">cybercloud</span>
+            <span class="neon-text font-cyber font-bold text-xl">cybercloude</span>
           </div>
           <p class="text-cyber-200 font-tech text-sm leading-relaxed max-w-md">
             advanced secure file storage solution
@@ -58,7 +58,7 @@
       <div class="pt-8 border-t border-cyber-500/20">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="text-cyber-300 font-tech text-sm mb-4 md:mb-0">
-            © 2025 <span class="neon-text">cybercloud</span> /
+            © 2025 <span class="neon-text">cybercloude</span> /
             <span class="text-neon-purple">all systems operational</span>.
           </div>
           <div class="flex space-x-4">

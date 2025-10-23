@@ -11,7 +11,7 @@
           </div>
           <div>
             <span class="cyber-header text-2xl font-bold font-cyber">
-              cybercloud
+              cybercloude
             </span>
             <div class="h-1 w-0 group-hover:w-full bg-gradient-to-r from-cyber-500 to-neon-purple transition-all duration-500 rounded-full"></div>
           </div>

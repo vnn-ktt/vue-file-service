@@ -8,7 +8,7 @@
     ]"
       @submit.prevent="handleSubmit"
   >
-    <!-- Form header -->
+    <!-- form header -->
     <div v-if="$slots.header || title" class="cyber-form-header">
       <slot name="header">
         <h3 v-if="title" class="cyber-form-title" :class="titleSizeClasses[titleSize]">
@@ -20,12 +20,12 @@
       </slot>
     </div>
 
-    <!-- Form content -->
+    <!-- form content -->
     <div class="cyber-form-content">
       <slot />
     </div>
 
-    <!-- Form actions -->
+    <!-- form actions -->
     <div v-if="$slots.actions || showDefaultActions" class="cyber-form-actions">
       <slot name="actions">
         <div class="flex space-x-4" :class="actionsLayoutClasses[actionsLayout]">
@@ -55,12 +55,12 @@
       </slot>
     </div>
 
-    <!-- Form footer -->
+    <!-- form footer -->
     <div v-if="$slots.footer" class="cyber-form-footer">
       <slot name="footer" />
     </div>
 
-    <!-- Global form error -->
+    <!-- global form error -->
     <div
         v-if="error"
         class="cyber-form-error"
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <!-- Form success message -->
+    <!-- form success message -->
     <div
         v-if="success"
         class="cyber-form-success"
@@ -100,7 +100,7 @@ interface Props {
   actionsLayout?: 'left' | 'center' | 'right' | 'space-between'
   loading?: boolean
   disabled?: boolean
-  error?: string
+  error?: string | null | undefined
   success?: string
   showSubmit?: boolean
   showCancel?: boolean
@@ -192,6 +192,9 @@ const handleCancel = () => {
 
 .cyber-form-content {
   @apply w-full;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .cyber-form-actions {

@@ -14,7 +14,7 @@
             <h3 class="text-2xl font-cyber font-bold text-neon-blue mb-4">OUR STORY</h3>
           </div>
           <p class="text-cyber-300 font-tech leading-relaxed">
-            Founded in 2024, CyberCloud emerged from the need for truly secure,
+            Founded in 2024, Cybercloude emerged from the need for truly secure,
             decentralized cloud storage. We believe your data should be yours alone -
             encrypted, distributed, and accessible only by you.
           </p>
