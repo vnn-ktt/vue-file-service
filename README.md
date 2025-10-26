@@ -1,38 +1,36 @@
-# vue-file-service
+# 🌐 Cybercloude — Secure File Service
 
-This template should help get you started developing with Vue 3 in Vite.
+**Cybercloude** — это современный веб-сервис для безопасного хранения, обмена и управления файлами.  
+Проект реализован на **Vue 3** с применением **TypeScript**, **Vite** и архитектуры, ориентированной на безопасность и масштабируемость.
 
-## Recommended IDE Setup
+---
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🚀 Основные возможности
 
-## Recommended Browser Setup
+- 🔐 **Безопасное хранение данных** — файлы шифруются на стороне клиента перед загрузкой.
+- 📂 **Загрузка и скачивание файлов** с проверкой подлинности пользователей.
+- 👥 **Управление доступом** — разграничение прав между пользователями и организациями.
+- 📱 **Адаптивный интерфейс** — удобен как для десктопа, так и для мобильных устройств.
+- ⚙️ **Интеграция с REST API** — поддержка авторизации, токенов и сессий.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+---
 
-## Customize configuration
+## 🧠 Технологический стек
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+| Категория | Технология |
+|------------|-------------|
+| **Frontend Framework** | [Vue 3](https://vuejs.org/) (Composition API) |
+| **Build Tool** | [Vite](https://vitejs.dev/) |
+| **Language** | TypeScript |
+| **UI Framework** | [Tailwind CSS](https://tailwindcss.com/) |
+| **State Management** | [Pinia](https://pinia.vuejs.org/) |
+| **Routing** | [Vue Router](https://router.vuejs.org/) |
+| **HTTP Client** | [Axios](https://axios-http.com/) |
+| **Cryptography** | [crypto-js](https://www.npmjs.com/package/crypto-js) |
+| **Linting / Formatting** | ESLint + Prettier |
 
-## Project Setup
+## 💻 Скрипты
 
-```sh
-npm install
-```
+- bun run dev - запуск в режиме разработки
+- bun run build - запуск сборки в продакшен
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
