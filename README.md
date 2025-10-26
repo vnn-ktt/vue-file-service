@@ -36,3 +36,9 @@
 - bun run dev - запуск в режиме разработки
 - bun run build - запуск сборки в продакшен
 
+---
+
+## 📸 Скриншоты
+![Screenshot_1.png](demo/Screenshot_1.png)
+![Screenshot_2.png](demo/Screenshot_2.png)
+![Screenshot_3.png](demo/Screenshot_3.png)
