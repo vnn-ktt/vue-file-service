@@ -29,6 +29,8 @@
 | **Cryptography** | [crypto-js](https://www.npmjs.com/package/crypto-js) |
 | **Linting / Formatting** | ESLint + Prettier |
 
+---
+
 ## 💻 Скрипты
 
 - bun run dev - запуск в режиме разработки
